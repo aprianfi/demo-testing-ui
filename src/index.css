@@ -40,6 +40,77 @@ main {
   margin-bottom: 30px;
 }
 
+.home-hero { margin-top: 18px; }
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.brand-link .brand-mark { width: 44px; height: 44px; border-radius: 13px; font-size: 21px; }
+.brand-link > span:last-child { display: flex; flex-direction: column; gap: 2px; }
+.brand-link strong { font-size: 14px; }
+.brand-link small { color: var(--muted); font-size: 10px; }
+
+.pattern-nav { display: flex; gap: 7px; }
+.pattern-nav a {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.68);
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 11px;
+  text-decoration: none;
+}
+
+.pattern-nav a:hover, .pattern-nav a.active { color: var(--lime); border-color: var(--green-dark); background: var(--green-dark); }
+
+.page-intro { max-width: 780px; margin-bottom: 28px; }
+.page-intro h1 { margin: 5px 0 9px; }
+.page-intro p { color: var(--muted); line-height: 1.6; }
+.pattern-number { color: var(--green); font-family: "SFMono-Regular", Consolas, monospace; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+
+.pattern-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.pattern-card {
+  position: relative;
+  min-height: 250px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 25px;
+  color: var(--ink);
+  background: rgba(251, 252, 247, .94);
+  box-shadow: 0 14px 40px rgba(30, 54, 41, .06);
+  text-decoration: none;
+  transition: transform 180ms, border-color 180ms, box-shadow 180ms;
+}
+
+.pattern-card:hover { transform: translateY(-4px); border-color: #9fb3a6; box-shadow: 0 20px 48px rgba(30, 54, 41, .12); }
+.pattern-card > span { display: grid; place-items: center; width: 38px; height: 38px; margin-bottom: 35px; border-radius: 12px; color: var(--green-dark); background: #e2f3cc; font: 700 11px "SFMono-Regular", Consolas, monospace; }
+.pattern-card h2 { margin-bottom: 10px; }
+.pattern-card p { min-height: 63px; color: var(--muted); font-size: 13px; line-height: 1.6; }
+.pattern-card strong { color: var(--green); font-size: 12px; }
+
 .brand-mark {
   display: grid;
   place-items: center;
@@ -147,6 +218,15 @@ input:focus, select:focus {
 .status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
 .render-status.is-error { color: #91382f; background: #fceae7; }
 .render-status.is-error .status-dot { background: var(--danger); }
+.render-status.state-waiting-time { color: #745d24; background: #fff6d9; }
+.render-status.state-waiting-time .status-dot { background: #c49422; }
+.render-status.state-loading { color: #315f86; background: #e8f3fc; }
+.render-status.state-loading .status-dot { background: #3f88bd; animation: pulse 700ms ease-in-out infinite alternate; }
+
+@keyframes pulse { to { opacity: .35; transform: scale(.72); } }
+
+.dynamic-slot:empty { display: none; }
+.dynamic-section[hidden] { display: none; }
 
 .dynamic-section {
   min-width: 0;
@@ -229,6 +309,7 @@ pre { overflow: auto; max-height: 240px; margin: 22px 0 0; border-radius: 10px; 
   main { width: min(100% - 24px, 680px); padding-top: 28px; }
   .layout { grid-template-columns: 1fr; }
   .trace-card { position: static; }
+  .pattern-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 560px) {
@@ -237,5 +318,10 @@ pre { overflow: auto; max-height: 240px; margin: 22px 0 0; border-radius: 10px; 
   .form-card, .trace-card { padding: 21px; border-radius: 18px; }
   .form-grid { grid-template-columns: 1fr; }
   .card-heading { align-items: flex-start; }
+  .app-header { align-items: flex-start; flex-direction: column; margin-bottom: 34px; }
+  .pattern-nav { width: 100%; }
+  .pattern-nav a { flex: 1; }
+  .pattern-grid { grid-template-columns: 1fr; }
+  .pattern-card { min-height: 220px; }
 }
 
